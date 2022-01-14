@@ -1,27 +1,33 @@
 import './App.css';
-import User from "./components/User";   //Импорт ... компонента.
+import User from "./components/User";
+import {useEffect, useState} from "react";
 
-let users = [
-    {id: 1, name: 'Sas', age: 18, status: true},
-    {id: 2, name: 'Ksu', age: 22, status: false},
-    {id: 3, name: 'Din', age: 26, status: true},
-    {id: 4, name: 'Nst', age: 30, status: false},
-];
+function App() {
 
-function App() {    //Названия функций-компонент с большой буквы
-    return (        //Можно возвращать только один элемент, DIV.
-        <div className="App"> //class >> calsName - суть одна, другое имя
-            <p>Для сокращения ссылок - http://tny.im</p>
+    let [usersList, setUsersList] = useState([]);
+    //userList хранит данные, а ф-ция setUserList задаёт их
+    //Ожидаемые данные initialState могут быть любыми, {}, [], number, ...
 
-            {       //Открытие разверстки для JS кода
-                users.map(item => <User key={item.id}           //Ключ нужен для уникальности объекта
-                                        name={item.name}        //Передача данных в компоненту User
-                                        age={item.age}
-                                        status={item.status}/>)
+    useEffect(() => {
+        fetch('https://jsonplaceholder.typicode.com/users')
+            .then(value => value.json())
+            .then(users => {
+                setUsersList(users);
+            });
+    }, []);
+    //Хук useEffect позволяет использовать fetch в React
+    //Хуки useEffect и useState используются вместе, для получения и сохранения данных.
+
+    return (
+        <div className="App">
+            {
+                usersList.map(value => <User key={value.id}
+                                             id={value.id}
+                                             name={value.name}
+                                             username={value.username}/>)
             }
         </div>
     );
 }
 
-export default App;     //Предоставление доступа к компоненту.
-//Файлы в src для просмотра App.js components/User.js
+export default App;
