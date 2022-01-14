@@ -11,3 +11,4 @@ const User = (props) => {   //props - получение переданных д
 };
 
 export default User;
+//rsc > TAB создание компонента
