@@ -1,3 +1,11 @@
-.App {
-
+.App div{
+    font-size: 40px;
+    border: 5px solid lightpink;
+    margin: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
+.App img {
+     height: 50px;
+ }
