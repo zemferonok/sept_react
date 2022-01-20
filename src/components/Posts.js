@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import Post from "./Post";
 
 const Posts = () => {
 
@@ -6,18 +7,17 @@ const Posts = () => {
     useEffect(() => {
         fetch('https://jsonplaceholder.typicode.com/posts')
             .then(value => value.json())
-            .then(value => setPosts(value));
+            .then(value => {
+                let filter = value.filter((data, index) => index < 10);
+                setPosts(filter)
+            });
     }, [])
 
     return (
         <div>
             <ul>
                 {
-                    posts.map(post => {
-                        if (post.id < 11) {
-                            return <li>{post.id} - {post.title}</li>
-                        }
-                    })
+                    posts.map(post => <li><Post key={post.id} info={post}/></li>)
                 }
             </ul>
         </div>
