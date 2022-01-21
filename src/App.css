@@ -1,3 +1,19 @@
-.App {
+.App .wrap{
+    display: flex;
+}
 
+.box {
+    margin: 10px;
+    min-height: 100px;
+    border: 10px solid violet;
+}
+
+.users {
+    box-sizing: border-box;
+    width: 50%;
+}
+
+.userDetails {
+    box-sizing: border-box;
+    width: 50%;
 }
