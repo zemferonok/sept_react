@@ -1,19 +1,11 @@
 import './App.css';
-import Child from "./components/Child";
+import User from "./components/User";
 
 function App() {
 
-    let user = {name: 'Vasya', age: 16};
-    let text = 'BigPinkToy';
-
     return (
         <div>
-            {/*..передачи данных между тегами компоненты*/}
-            <Child>
-                SomeText{/*First sending data*/}
-                {user}{/*Second sending data*/}
-                {text}{/*Third sending data*/}
-            </Child>
+            <User/>
         </div>
     );
 }
