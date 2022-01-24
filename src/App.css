@@ -1,3 +1,13 @@
 .App {
+}
 
+.style1 {
+    border: 10px solid red;
+    padding: 10px;
+    font-size: 60px;
+}
+
+.style2 {
+    border: 10px solid blue;
+    padding: 10px;
 }
