@@ -1,6 +1,5 @@
 import {json} from "../configs/urls";
 
-
 const getUsers = () => {
     return fetch(json.users)
         .then(value => value.json())
@@ -10,6 +9,12 @@ const getUser = (id) => {
     return fetch(json.users + '/' + id)
         .then(value => value.json())
 };
+
+const getUserPosts = (id) => {
+    return fetch(json.users + '/' + id + '/posts')
+        .then(value => value.json())
+};
+
 
 const getPosts = () => {
     return fetch(json.posts)
@@ -21,23 +26,16 @@ const getPost = (id) => {
         .then(value => value.json())
 };
 
-const getComments = () => {
-    return fetch(json.comments)
+const getPostComments = (id) => {
+    return fetch(json.posts + '/' + id + '/comments')
         .then(value => value.json())
 };
-
-const getComment = (id) => {
-    return fetch(json.comments + '/' + id)
-        .then(value => value.json())
-};
-
-
 
 export const service = {
     getUsers,
     getUser,
+    getUserPosts,
     getPosts,
     getPost,
-    getComments,
-    getComment,
+    getPostComments,
 }
